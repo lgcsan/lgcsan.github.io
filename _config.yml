@@ -32,7 +32,7 @@ duoshuo_shortname: #hygblog
 disqus_shortname: #gaohaoyang
 # gitment 评论插件,全必填
 gitment_title: 评论
-gitment_owner: lcsan
+gitment_owner: lgcsan
 gitment_repo: lcsan.cf
 gitment_client_id: c9e7214c5eeac47f80be
 gitment_client_secret: 0c0e70e79f3c583a1877b7986f5763ff2423c86e
