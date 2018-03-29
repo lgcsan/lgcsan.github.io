@@ -30,6 +30,12 @@ description_footer: 方兴未艾,永不止步！
 # 两种评论插件，选一个就好了，使用自己的 short_name
 duoshuo_shortname: #hygblog
 disqus_shortname: #gaohaoyang
+# gitment 评论插件,全必填
+gitment_title: 评论
+gitment_owner: lcsan
+gitment_repo: lcsan.cf
+gitment_client_id: c9e7214c5eeac47f80be
+gitment_client_secret: 0c0e70e79f3c583a1877b7986f5763ff2423c86e
 
 # statistic analysis 统计代码
 # 百度统计 id，将统计代码替换为自己的百度统计id，即
