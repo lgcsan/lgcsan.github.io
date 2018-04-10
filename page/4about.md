@@ -15,7 +15,7 @@ type: page
 
 ## 联系我
 
-* GitHub：[Gaohaoyang](https://github.com/lcsan)
+* GitHub：[lcsan](https://github.com/lcsan)
 * email：444139212@163.com
 * [Weibo](https://weibo.com/230310012)
 
