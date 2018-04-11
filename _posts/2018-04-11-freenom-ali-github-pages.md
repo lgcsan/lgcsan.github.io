@@ -40,7 +40,7 @@ gitment_client_secret: xxx
 
 ## 阿里云设置
 这里关键有一点，Freenom的Nameservers要设置成阿里的DNS
-![](http://imgsa.baidu.com/exp/pic/item/027a45b5c9ea15cef234a4e7b3003af33887b2c3.jpg)
+![](http://c.hiphotos.baidu.com/image/%70%69%63/item/72f082025aafa40fb93708bba764034f79f019e7.jpg)
 这里DNS改成:ns1.alidns.com 和 ns2.alidns.com
 
 然后去阿里云，管理台配置DNS解析。注意是cname，因为github pages用的是域名，所以直接用cname就行了。找网上有些用a记录，然后ping XXX.github.io得到ip再配置也是可以的。不过github pages会告警，没有配置域名。
