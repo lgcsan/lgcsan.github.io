@@ -1,102 +1,67 @@
 ---
 layout: post
-title:  "这是我自己来测试的md页面"
-categories: JavaScript
-tags:  countdown JavaScript
-author: SnakeSon
+title:  "Freenom免费域名 + 阿里DNS + github pages"
+categories: web
+tags:  Freenom 免费域名 阿里 DNS github pages
+author: lcsan
 ---
 
 * content
 {:toc}
 
-关于写倒计时大家可能都都比较熟悉，使用 setTimeout 或 setInterval 就可以搞定。几秒钟或者几分钟的倒计时这样写没有问题，但是如果是长时间的倒计时，这样写就会不准确。如果用户修改了他的设备时间，这样的倒计时就没有意义了。今天就说说写一个精确的倒计时的方法。
+一直看别人在github pages上搭Blog，我也fork了一个模板过来，然后就有了你当前看到的这个了。
+本人比较赖，啥东西都没改就直接用了。然后嫌弃直接用pages的二级域名不好看，就找着Freenom搞了个免费域名挂着，走阿里的免费CDN解析，凑合着用吧。
+现在既然搞完了，就顺便记录以下，免得忘记了。
 
-![](https://img.alicdn.com/tfs/TB18QnlOpXXXXcVXpXXXXXXXXXX-388-256.png)
+## github pages个人博客
+网上一大把，不想自己折腾。直接fork:[https://github.com/lcsan/lcsan.github.io](https://github.com/lcsan/lcsan.github.io)
 
+把根目下的CNAME里面的域名，改成你申请的域名就行了。其他的东西看着改。
 
+还有，我把评论改成gitment插件了。
 
-
-## 原理
-
-众所周知 setTimeout 或者 setInterval 调用的时候会有微小的误差。有人做了一个 [demo](https://bl.ocks.org/kenpenn/raw/92ebaa71696b4c4c3acd672b1bb3f49a/) 来观察这个现象并对其做了修正。短时间的误差倒也可以接受，但是作为一个长时间的倒计时，误差累计就会导致倒计时不准确。
-
-因此我们可以在获取剩余时间的时候，每次 new 一个设备时间，因为设备时间的流逝相对是准确的，并且如果设备打开了网络时间同步，也会解决这个问题。
-
-但是，如果用户修改了设备时间，那么整个倒计时就没有意义了，用户只要将设备时间修改为倒计时的 endTime 就可以轻易看到倒计时结束是页面的变化。因此一开始获取服务端时间就是很重要的。
-
-简单的说，一个简单的精确倒计时原理如下：
-
-- 初始化时请求一次服务器时间 serverTime，再 new 一个设备时间 deviceTime
-- deviceTime 与 serverTime 的差作为时间偏移修正
-- 每次递归时 new 一个系统时间，解决 setTimeout 不准确的问题
-
-## 代码
-
-获取剩余时间的代码如下：
-
-```js
-/**
- * 获取剩余时间
- * @param  {Number} endTime    截止时间
- * @param  {Number} deviceTime 设备时间
- * @param  {Number} serverTime 服务端时间
- * @return {Object}            剩余时间对象
- */
-let getRemainTime = (endTime, deviceTime, serverTime) => {
-    let t = endTime - Date.parse(new Date()) - serverTime + deviceTime
-    let seconds = Math.floor((t / 1000) % 60)
-    let minutes = Math.floor((t / 1000 / 60) % 60)
-    let hours = Math.floor((t / (1000 * 60 * 60)) % 24)
-    let days = Math.floor(t / (1000 * 60 * 60 * 24))
-    return {
-        'total': t,
-        'days': days,
-        'hours': hours,
-        'minutes': minutes,
-        'seconds': seconds
-    }
-}
+插件配置：[commons](https://github.com/lcsan/lcsan.github.io/blob/master/_includes/comments.html)
+```yaml
+# gitment 评论插件,全必填
+gitment_title: 评论
+gitment_owner: xxx
+gitment_repo: xxx.github.io
+gitment_client_id: xxx
+gitment_client_secret: xxx
 ```
+具体配置参考：
+[gitment](https://imsun.net/posts/gitment-introduction/)
 
-<del>获取服务器时间可以使用 mtop 接口 `mtop.common.getTimestamp` </del>
+## Freenom免费域名注册
+网站：[http://www.freenom.com/zh/index.html?lang=zh](http://www.freenom.com/zh/index.html?lang=zh)
 
-然后可以通过下面的方式来使用：
+步骤参考这个来，很清晰的描述：
+[https://jingyan.baidu.com/article/0eb457e52987b203f0a90541.html](https://jingyan.baidu.com/article/0eb457e52987b203f0a90541.html)
 
-```js
-// 获取服务端时间（获取服务端时间代码略）
-getServerTime((serverTime) => {
+## 阿里云设置
+这里关键有一点，Freenom的Nameservers要设置成阿里的DNS
+![](http://imgsa.baidu.com/exp/pic/item/027a45b5c9ea15cef234a4e7b3003af33887b2c3.jpg)
+这里DNS改成:ns1.alidns.com 和 ns2.alidns.com
 
-    //设置定时器
-    let intervalTimer = setInterval(() => {
+然后去阿里云，管理台配置DNS解析。注意是cname，因为github pages用的是域名，所以直接用cname就行了。找网上有些用a记录，然后ping XXX.github.io得到ip再配置也是可以的。不过github pages会告警，没有配置域名。
 
-        // 得到剩余时间
-        let remainTime = getRemainTime(endTime, deviceTime, serverTime)
+1.新配置申请到的Freenom域名
+![](http://f.hiphotos.baidu.com/image/%70%69%63/item/d4628535e5dde7111d268690abefce1b9c1661e4.jpg)
 
-        // 倒计时到两个小时内
-        if (remainTime.total <= 7200000 && remainTime.total > 0) {
-            // do something
+![](http://b.hiphotos.baidu.com/image/%70%69%63/item/bd315c6034a85edf2c6d3b4545540923dc5475f7.jpg)
 
-        //倒计时结束
-        } else if (remainTime.total <= 0) {
-            clearInterval(intervalTimer);
-            // do something
-        }
-    }, 1000)
-})
-```
+2.配置域名解析
+![](http://c.hiphotos.baidu.com/image/%70%69%63/item/3801213fb80e7becd6dcc787232eb9389b506b56.jpg)
 
-这样的的写法也可以做到准确倒计时，同时也比较简洁。不需要隔段时间再去同步一次服务端时间。
+3.配置github pages解析
+![](http://a.hiphotos.baidu.com/image/%70%69%63/item/03087bf40ad162d9da6fa67a1ddfa9ec8b13cdd7.jpg)
+
+![](http://f.hiphotos.baidu.com/image/%70%69%63/item/aa18972bd40735fa03658adf92510fb30f24083b.jpg)
+
+ok，完美！
 
 ## 补充
 
-在写倒计时的时候遇到了一个坑这里记录一下。
+本来有微博图床的，家里美装插件。临时用百度识图充充图床
 
-**千万别在倒计时结束的时候请求接口**。会让服务端瞬间 QPS 峰值达到非常高。
-
-![](https://img.alicdn.com/tfs/TB1LBzjOpXXXXcnXpXXXXXXXXXX-154-71.png)
-
-如果在倒计时结束的时候要使用新的数据渲染页面，正确的做法是：
-
-在倒计时结束前的一段时间里，先请求好数据，倒计时结束后，再渲染页面。
-
-关于倒计时，如果你有什么更好的解决方案，欢迎评论交流。
+**百度识图是个好东西**你看我图片都是直链百度的图片。
