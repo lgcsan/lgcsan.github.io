@@ -9,14 +9,14 @@
 title: 方兴未艾
 brief-intro: Java Coder
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://lgcsan.github.io" # the base hostname & protocol for your site
+url: "https://lcsan.github.io" # the base hostname & protocol for your site
 
 permalink: /:year/:month/:day/:title/
 
 # other links
 twitter_username: #
 facebook_username: #
-github_username:  lgcsan
+github_username:  lcsan
 email: 444139212@163.com
 weibo_username: 230310012
 zhihu_username: 
