@@ -6,6 +6,7 @@
 <script>
   var gitment = new Gitment({
     title: '{{ site.gitment_title }}',
+    id: '{{ .Slug }}',
     owner: '{{ site.gitment_owner }}',
     repo: '{{ site.gitment_repo }}',
     oauth: {
