@@ -34,8 +34,8 @@ disqus_shortname: #gaohaoyang
 gitment_title: 评论
 gitment_owner: lcsan
 gitment_repo: lcsan.github.io
-gitment_client_id: b680d00ab8674044b934
-gitment_client_secret: 9eae4db43560e999093d023e8dcc2924611998fb
+gitment_client_id: 1e3e5d13d007ee0c66b3
+gitment_client_secret: 7d80a816b617d8a67c58588bc7e05176e0e9057c
 
 # statistic analysis 统计代码
 # 百度统计 id，将统计代码替换为自己的百度统计id，即
