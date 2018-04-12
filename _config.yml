@@ -41,7 +41,7 @@ gitment_client_secret: 0c0e70e79f3c583a1877b7986f5763ff2423c86e
 # 百度统计 id，将统计代码替换为自己的百度统计id，即
 # hm.src = "//hm.baidu.com/hm.js?xxxxxxxxxxxx";
 # xxxxx字符串
-baidu_tongji_id: 
+baidu_tongji_id: 49225f1b9fe775ce9e5cef4cc2b33ae8
 google_analytics_id:  # google 分析追踪id
 
 # Build settings
