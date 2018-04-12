@@ -45,28 +45,26 @@ gitment_client_secret: xxx
 
 ## 阿里云设置
 这里关键有一点，Freenom的Nameservers要设置成阿里的DNS
-![](http://c.hiphotos.baidu.com/image/%70%69%63/item/72f082025aafa40fb93708bba764034f79f019e7.jpg)
+![](https://ws1.sinaimg.cn/large/7201d9dcgy1fqa6nvzromj20rn0epdhv.jpg)
 这里DNS改成:ns1.alidns.com 和 ns2.alidns.com
 
 然后去阿里云，管理台配置DNS解析。注意是cname，因为github pages用的是域名，所以直接用cname就行了。找网上有些用a记录，然后ping XXX.github.io得到ip再配置也是可以的。不过github pages会告警，没有配置域名。
 
 1.新配置申请到的Freenom域名
-![](http://f.hiphotos.baidu.com/image/%70%69%63/item/d4628535e5dde7111d268690abefce1b9c1661e4.jpg)
+![](https://ws1.sinaimg.cn/large/7201d9dcgy1fqa6nvzq58j20wm0f73zg.jpg)
 
-![](http://b.hiphotos.baidu.com/image/%70%69%63/item/bd315c6034a85edf2c6d3b4545540923dc5475f7.jpg)
+![](https://ws1.sinaimg.cn/large/7201d9dcgy1fqa6nvz0t6j20mf08rt8s.jpg)
 
 2.配置域名解析
-![](http://c.hiphotos.baidu.com/image/%70%69%63/item/3801213fb80e7becd6dcc787232eb9389b506b56.jpg)
+![](https://ws1.sinaimg.cn/large/7201d9dcgy1fqa6nvz9gyj20n206rdfv.jpg)
 
 3.配置github pages解析
-![](http://a.hiphotos.baidu.com/image/%70%69%63/item/03087bf40ad162d9da6fa67a1ddfa9ec8b13cdd7.jpg)
+![](https://ws1.sinaimg.cn/large/7201d9dcgy1fqa6nvz3fuj20l80chmxc.jpg)
 
-![](http://f.hiphotos.baidu.com/image/%70%69%63/item/aa18972bd40735fa03658adf92510fb30f24083b.jpg)
+![](https://ws1.sinaimg.cn/large/7201d9dcgy1fqa6nvyz3jj20l10cvweo.jpg)
 
 ok，完美！
 
 ## 补充
 
-本来有微博图床的，家里没装插件。临时用百度识图充充图床
-
-**百度识图是个好东西**,你看我图片都是直链百度的图片。
+本来有微博图床的，家里没装插件。临时用百度识图充充图床。结果百度识图偶尔也抽风,有时候失效。
