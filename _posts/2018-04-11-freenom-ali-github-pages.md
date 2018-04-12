@@ -14,6 +14,7 @@ author: lcsan
 现在既然搞完了，就顺便记录以下，免得忘记了。
 
 ## github pages个人博客
+
 网上一大把，不想自己折腾。直接fork:[https://github.com/lcsan/lcsan.github.io](https://github.com/lcsan/lcsan.github.io)
 
 把根目下的CNAME里面的域名，改成你申请的域名就行了。其他的东西看着改。
